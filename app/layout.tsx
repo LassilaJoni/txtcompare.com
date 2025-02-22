@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AdSense from "@/components/AdSense";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +18,8 @@ export const metadata: Metadata = {
   description: "Easy to use text comparison website",
 };
 
+const publisherId = process.env.ADSENSE_PUBLISHER_ID;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,6 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      {publisherId && <AdSense publisherId={publisherId} />}
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
