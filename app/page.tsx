@@ -1,5 +1,4 @@
 import TextDiffChecker from "@/components/TextDiffChecker";
-import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
