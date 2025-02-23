@@ -34,7 +34,7 @@ export default function TextDiffChecker() {
           <textarea
             className="w-full border p-2 rounded mb-2"
             rows={10}
-            placeholder="Left text"
+            placeholder="Paste first version of a text here"
             value={leftText}
             onChange={(e) => setLeftText(e.target.value)}
           />
@@ -49,7 +49,7 @@ export default function TextDiffChecker() {
           <textarea
             className="w-full border p-2 rounded mb-2"
             rows={10}
-            placeholder="Right text"
+            placeholder="Paste second version of a text here"
             value={rightText}
             onChange={(e) => setRightText(e.target.value)}
           />
