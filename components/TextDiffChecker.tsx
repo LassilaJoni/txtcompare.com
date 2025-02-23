@@ -9,7 +9,6 @@ export default function TextDiffChecker() {
   const [leftText, setLeftText] = useState("");
   const [rightText, setRightText] = useState("");
 
-
   function copyLeftToClipboard() {
     navigator.clipboard
       .writeText(leftText)
@@ -17,7 +16,6 @@ export default function TextDiffChecker() {
       .catch((err) => console.error("Failed to copy left text: ", err));
   }
 
-  // Copies right text to the clipboard
   function copyRightToClipboard() {
     navigator.clipboard
       .writeText(rightText)
@@ -25,10 +23,23 @@ export default function TextDiffChecker() {
       .catch((err) => console.error("Failed to copy right text: ", err));
   }
 
+  function swapTexts() {
+    const temp = leftText;
+    setLeftText(rightText);
+    setRightText(temp);
+  }
+
   return (
     <main className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Compare Texts</h1>
-
+      <div className="flex justify-center mb-4">
+        <button
+          className="px-4 py-2 bg-blue-700 text-white rounded"
+          onClick={swapTexts}
+        >
+          Swap Texts
+        </button>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div>
           <textarea
@@ -59,8 +70,11 @@ export default function TextDiffChecker() {
           >
             Copy Right to Clipboard
           </button>
+    
         </div>
       </div>
+      
+
 
       <div className="bg-white p-4 rounded shadow">
         <DiffViewer
